@@ -1,0 +1,17 @@
+.carousel-control-prev-icon,
+.carousel-control-next-icon{
+    background-color: #e50914;
+}
+
+.card-group .card{
+    display: flex;
+    align-items: center;
+    margin: 10px ;
+
+}
+.card-group .card img{
+    max-width:200px;
+    height: 225px;
+    
+
+}
