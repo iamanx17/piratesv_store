@@ -27,7 +27,7 @@ SECRET_KEY = 'gbn2g)yna&lf5jij7)-*kgsl+st^zt(1p3+r2%787*hk$oyl_h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['piratesvstore.herokuapp.com']
 
 
 # Application definition
