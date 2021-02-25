@@ -78,8 +78,11 @@ WSGI_APPLICATION = 'piratesv_store.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME':'d41njsbkvmaeft',
+        'HOST':'ec2-54-164-238-108.compute-1.amazonaws.com',
+        'USER':'dlvgmycvdkcowl',
+        'PASSWORD':'aa5575077ebd6f9806ed4068f754caf202d9852dbe17412da95a4d8b68176c6e'
     }
 }
 
