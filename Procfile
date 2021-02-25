@@ -1,0 +1,1 @@
+web: gunicorn piratesv_store.wsgi
