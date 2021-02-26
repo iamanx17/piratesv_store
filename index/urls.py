@@ -3,6 +3,6 @@ from . import views
 
 urlpatterns = [
     path('',views.home,name='home'),
-    path('<int:id>',views.viewproduct,name='viewproduct'),
+    path('<str:slug>',views.viewproduct,name='viewproduct'),
     path('json',views.json,name='json')
 ]

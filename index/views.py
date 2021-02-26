@@ -4,7 +4,6 @@ from .models import products,category
 # Create your views here.
 
 def home(request):
-    pro=products.objects.all()
     categ=category.objects.values('cate','id')
     product=[]
     for i in categ:
@@ -12,11 +11,13 @@ def home(request):
         product.append([i['cate'],pp])
     return render(request,'index.html',{'pro':product})
 
-def viewproduct(request,id):
-    pro=products.objects.filter(id=id)
-    recpro=products.objects.filter(product_cate=id).exclude(id=id)
-    print(recpro)
-
+def viewproduct(request,slug):
+    pro=products.objects.filter(product_name=slug)
+    cat=products.objects.filter(product_name=slug).values('product_cate')
+    for i in cat:
+        x=i['product_cate']
+    
+    recpro=products.objects.filter(product_cate=x).exclude(product_name=slug)  
     return render(request,'product.html',{'pro':pro[0],'recpro':recpro})
 
 def json(request):
