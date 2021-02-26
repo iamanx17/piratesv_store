@@ -4,7 +4,7 @@
 <!--content-->
 
 {% block content %} {% for x,y in pro %}
-<div class="container mb-5 mt-5">
+<div class="container mb-5 mt-5" style="position: relative; top: 100px">
   <h3 class="text-center">{{x}}</h3>
   <hr class="w-50 mx-auto mb-5 mt-5" />
 
@@ -20,9 +20,7 @@
               alt="product image"
             />
             <div class="card-body">
-              <h5 class="card-title">
-                {{i.product_name}}
-              </h5>
+              <h5 class="card-title">{{i.product_name}}</h5>
               <p class="card-text">{{i.product_name}}</p>
               <button id="product{{i.id}}" class="btn btn-dark cart">
                 Add to cart
@@ -36,52 +34,54 @@
         <div class="card-group">{% endif %} {% endfor %}</div>
       </div>
     </div>
-    <a
-      class="carousel-control-prev"
-      type="button"
-      data-bs-target="#recentlyadded"
-      data-bs-slide="prev"
-    >
-      <span class="carousel-control-prev-icon"></span>
-    </a>
-    <a
-      class="carousel-control-next"
-      type="button"
-      data-bs-target="#recentlyadded"
-      data-bs-slide="next"
-    >
-      <span class="carousel-control-next-icon"></span>
-    </a>
   </div>
+  <a
+  class="carousel-control-prev bt"
+  type="button"
+  data-bs-target="#recentlyadded"
+  data-bs-slide="prev"
+>
+  <span class="carousel-control-prev-icon"></span>
+</a>
+<a
+  class="carousel-control-next bt"
+  type="button"
+  data-bs-target="#recentlyadded"
+  data-bs-slide="next"
+>
+  <span class="carousel-control-next-icon"></span>
+</a>
 </div>
 
-{% endfor %} {% endblock content %} 
 
-{% block script %}
+{% endfor %} {% endblock content %} {% block script %}
+
 <script>
-  
-  if (localStorage.getItem('cart') == null) {
+  if (localStorage.getItem("cart") == null) {
     var cart = {};
   } else {
-    cart = JSON.parse(localStorage.getItem('cart'));
-    document.getElementById('cart').innerHTML=Object.keys(cart).length;
+    cart = JSON.parse(localStorage.getItem("cart"));
   }
 
   //jquery starts here//
 
-  $(".cart").click(function(){
-    var idstr = this.id.toString();
-    if (cart[idstr] != undefined){
+  $(".cart").click(function () {
+    var idstr = this.id;
+    if (cart[idstr] != undefined) {
       cart[idstr] = cart[idstr] + 1;
     } else {
       cart[idstr] = 1;
     }
 
-    console.log(cart);
     localStorage.setItem("cart", JSON.stringify(cart));
-    document.getElementById('cart').innerHTML=Object.keys(cart).length;
-});
 
+    var sum = 0;
+    for (item in cart) {
+      sum = sum + cart[item];
+    }
+    console.log(sum);
+    document.getElementById("cart").innerHTML = sum;
+  });
 </script>
 
 {% endblock script %}

@@ -3,6 +3,11 @@
     background-color: #e50914;
 }
 
+.container a{
+    top:55%;
+    max-height: 50px;
+}
+
 .card-group .card{
     display: flex;
     align-items: center;
